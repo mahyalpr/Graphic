@@ -1,0 +1,39 @@
+cub-webgl:webgl exercises / بدون ری اکت نوشته شده 
+نمرینات three.js:تمرینات در قالب کامپوننت Another
+پروژه در قالب کامپوننت FinalProject
+
+برای run :
+install Node.js on system
+1.npm install 
+2.npm start
+3.use localhost:3000 on borowser url
+
+برای دیدن پروژه نهایی به فایل
+App.js
+بروید و 
+<FinalProject /> 
+را از کامیت دراورید
+و
+<Remder /> 
+<Another />
+را کامیت کنید
+--------------------------------------------
+برای دیدن تمرینات three.js
+به فایل App.js 
+روید و 
+<Another />
+را از کامیت در آورید و
+<FinalProject /> 
+,
+<Remder /> 
+را کامیت کنید
+-------------------------------------------
+برای دیدن تمرین برخورد 
+به فایل App.js 
+روید و 
+<Render />
+را از کامیت در آورید و
+<FinalProject /> 
+,
+<Another /> 
+را کامیت کنید
