@@ -3,22 +3,13 @@ import ReactDOM from "react-dom";
 import MaterialIcon from '@material/react-material-icon';
 import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
-
+import './style.css'
 const style = {
-    height: 800, // we can control scene size by setting container dimensions
+    height: 800, 
 
 };
 var MeshList = [];
-// var canvas = document.getElementById("game"),
-//     ctx = canvas.getContext("2d")
 
-
-// var background = new Image();
-// background.src = './texture/universe.jpg';
-
-// background.onload = function(){
-//     ctx.drawImage(background,0,0);   
-// }
 var clock = new THREE.Clock();
 var delta = clock.getDelta();
 var moveDistance = delta*200;
@@ -44,7 +35,6 @@ class FinalProject extends React.Component {
     }
 
     leftRight = () => {
-        console.log("hi")
         let _this = this;
         window.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowLeft') {
@@ -88,7 +78,7 @@ class FinalProject extends React.Component {
     componentWillUnmount() {
         window.removeEventListener("resize", this.handleWindowResize);
         window.cancelAnimationFrame(this.requestID);
-    //  this.controls.dispose();
+
     }
 
     move = () => {
@@ -98,28 +88,20 @@ class FinalProject extends React.Component {
                 _this.camera.translateX();
                 _this.camera.position.x += -.1;
                 _this.char.position.x += -.1;
-          
             }
-
-          
         }
 
         if (_this.state.right) {
             if (_this.char.position.x < 5) {
                 _this.camera.position.x += .1;
                 _this.char.position.x += .1;
-        
             }
         }
     }
-    // Standard scene setup in Three.js. Check "Creating a scene" manual for more information
-    // https://threejs.org/docs/#manual/en/introduction/Creating-a-scene
-    sceneSetup = () => {
 
-        // get container dimensions and use them for scene sizing
+    sceneSetup = () => {
         const width = this.el.clientWidth;
         const height = this.el.clientHeight;
-
         this.scene = new THREE.Scene();
         const r = "./texture/";
       const urls = [
@@ -137,8 +119,6 @@ var skyBox = new THREE.CubeTextureLoader().load(urls);
         const near = 0.5;
         const far = 7;
         const color = 'black';
-        // this.scene.background = reflectionCube;
-        // this.scene.background = new THREE.Color(color);
         this.scene.background = skyBox;
         this.camera = new THREE.PerspectiveCamera(
             75, // fov = field of view
@@ -146,10 +126,7 @@ var skyBox = new THREE.CubeTextureLoader().load(urls);
             0.1, // near plane
             1000  // far plane
         );
-        // is used here to set some distance from a cube that is located at z = 0
-        // OrbitControls allow a camera to orbit around the object
-        // https://threejs.org/docs/#examples/controls/OrbitControls
-        // this.controls = new OrbitControls(this.camera, this.el);
+
         this.renderer = new THREE.WebGLRenderer();
         this.renderer.setSize(width, height);
         this.renderer.shadowMap.enabled = true;
@@ -157,10 +134,7 @@ var skyBox = new THREE.CubeTextureLoader().load(urls);
         this.el.appendChild(this.renderer.domElement); // mount using React ref
     };
 
-    // Here should come custom code.
-    // Code below is taken from Three.js BoxGeometry example
-    // https://threejs.org/docs/#
-    //api/en/geometries/BoxGeometry
+
     addCustomSceneObjects = () => {
        const loader = new THREE.TextureLoader();
         var geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -246,23 +220,7 @@ var skyBox = new THREE.CubeTextureLoader().load(urls);
     }
 
 
-    // removeLives = () => {
 
-
-    //     if (this.box.position.z <= -(this.state.level / 2) && this.box.position.z >= -(this.state.level * 2) / 3) {
-    //         if (this.char.position.x + .5 > this.box.position.x - .5 && this.box.position.x + .5 > this.char.position.x - .5) {
-    //             const life = document.getElementById('life' + this.state.lifeCounter);
-    //             life.style.display = 'none';
-    //             this.setState({lifeCounter: this.state.lifeCounter-1},function(){
-                  
-    //             })
-
-    //             if (this.state.lifeCounter === 0) {
-    //                 this.setState({lost: true, lifeCounter: 3,level:1})
-    //             }
-    //         }
-    //     }
-    // }
 
      collisionDetect=() => {
       var originPoint = this.char.position.clone();
@@ -286,7 +244,7 @@ var skyBox = new THREE.CubeTextureLoader().load(urls);
     startAnimationLoop = () => {
        
         this.box.position.z += .2 * (this.state.level);
-        // this.removeLives()
+
         this.collisionDetect()
         this.move();
         
@@ -302,9 +260,6 @@ var skyBox = new THREE.CubeTextureLoader().load(urls);
 
         this.renderer.setSize(width, height);
         this.camera.aspect = width / height;
-
-        // Note that after making changes to most of camera properties you have to call
-        // .updateProjectionMatrix for the changes to take effect.
         this.camera.updateProjectionMatrix();
     };
 

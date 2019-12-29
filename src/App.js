@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './App.css';
+import './Components/style.css'
 import ThreeJsComponent from './Components/ThreeJsComponent';
 import Another from './Components/Another';
 import {Render} from './Components/Show'
