@@ -1,0 +1,22 @@
+html{
+  background: #000;
+}
+
+canvas{
+  display: block;
+  margin: auto;
+}
+
+#exampleTitle {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+a:link {
+    color: lightgreen;
+}
+
+a:visited {
+    color: lightblue;
+}

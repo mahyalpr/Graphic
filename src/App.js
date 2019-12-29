@@ -10,9 +10,9 @@ class App extends React.Component{
   render(){
   
     return(
-      <Another />
+      // <Another />
       // <Render />
-      // <FinalProject />
+      <FinalProject />
     )
   }
 }
