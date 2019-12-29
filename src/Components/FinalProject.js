@@ -243,7 +243,7 @@ var skyBox = new THREE.CubeTextureLoader().load(urls);
   }
     startAnimationLoop = () => {
        
-        this.box.position.z += .2 * (this.state.level);
+        this.box.position.z += .3 * (this.state.level);
 
         this.collisionDetect()
         this.move();
